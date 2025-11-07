@@ -1,41 +1,7 @@
-// import 'dart:convert';
-// import 'package:dio/dio.dart';
-// import 'package:translator/translate.dart';
-//
-// class TranslateService {
-//   Future<String> showTranslate(
-//     String word,
-//     String fromLang,
-//     String toLang,
-//   ) async {
-//     final url =
-//         "https://api.mymemory.translated.net/get?q=$word&langpair=$fromLang|$toLang";
-//
-//     try {
-//       final dio = Dio();
-//       final resp = await dio.get(url);
-//
-//       if (resp.statusCode == 200) {
-//         final data = resp.data;
-//
-//         if (data['responseStatus'] == 200) {
-//           final translate = translateFromJson(json.encode(data));
-//           return translate.responseData.translatedText;
-//         } else {
-//           throw Exception("API Error: ${data['responseDetails']}");
-//         }
-//       } else {
-//         throw Exception("HTTP Error: ${resp.statusCode}");
-//       }
-//     } catch (e) {
-//       throw Exception("Translation failed: $e");
-//     }
-//   }
-// }
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:translator/match.dart';
-import 'package:translator/translate.dart'; // ملف الموديل
+import 'package:translator/app/data/models/match.dart';
+import 'package:translator/app/data/models/translate.dart'; // ملف الموديل
 
 class TranslateService {
   final dio = Dio();

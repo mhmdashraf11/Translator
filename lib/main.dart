@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 // import 'package:hive/hive.dart';
-import 'package:translator/home.dart';
-import 'package:translator/translate_entity.dart';
+import 'package:translator/app/pages/home.dart';
+import 'package:translator/app/bindings/home_binding.dart';
+import 'package:translator/app/data/models/translate_entity.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +28,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(debugShowCheckedModeBanner: false, home: Home());
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      // home: Home(),
+      initialRoute: '/home',
+      getPages: [
+        GetPage(name: '/home', page: () => Home(), binding: HomeBinding()),
+      ],
+    );
   }
 }
